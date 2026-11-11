@@ -3,210 +3,159 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package eduacess;
-
 /**
  *
  * @author joyro
  */
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class SupportReviewForm {
+// GUI for reviewing educational support requests
+public class SupportReviewForm extends JFrame {
 
-    private SupportManager manager;
+    JPanel p;
 
-    public SupportReviewForm(SupportManager manager) {
-        this.manager = manager;
+    JLabel titleLbl, idLbl;
+
+    JTextField idTf;
+    JTextArea requestTa;
+
+    JButton viewBtn, searchBtn, respondBtn;
+    JButton resolveBtn, deleteBtn, backBtn;
+
+    public SupportReviewForm() {
+
+        setTitle("Review Support Requests");
+        setSize(600, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        // Create panel
+        p = new JPanel();
+        p.setLayout(null);
+        p.setBackground(Color.WHITE);
+        add(p);
+
+        // Create labels
+        titleLbl = new JLabel("Review Support Requests");
+        idLbl = new JLabel("Request ID:");
+
+        // Create text fields
+        idTf = new JTextField();
+        requestTa = new JTextArea();
+        requestTa.setEditable(false);
+
+        // Create buttons
+        viewBtn = new JButton("View All");
+        searchBtn = new JButton("Search");
+        respondBtn = new JButton("Respond");
+        resolveBtn = new JButton("Resolve");
+        deleteBtn = new JButton("Delete");
+        backBtn = new JButton("Back");
+
+        // Set positions
+        titleLbl.setBounds(200, 20, 250, 30);
+
+        idLbl.setBounds(50, 70, 100, 30);
+        idTf.setBounds(150, 70, 150, 30);
+        searchBtn.setBounds(320, 70, 100, 30);
+
+        requestTa.setBounds(50, 120, 480, 180);
+
+        viewBtn.setBounds(50, 330, 100, 30);
+        respondBtn.setBounds(160, 330, 100, 30);
+        resolveBtn.setBounds(270, 330, 100, 30);
+        deleteBtn.setBounds(380, 330, 100, 30);
+        backBtn.setBounds(220, 390, 120, 30);
+
+        // Add components to panel
+        p.add(titleLbl);
+        p.add(idLbl);
+        p.add(idTf);
+        p.add(searchBtn);
+        p.add(requestTa);
+
+        p.add(viewBtn);
+        p.add(respondBtn);
+        p.add(resolveBtn);
+        p.add(deleteBtn);
+        p.add(backBtn);
+
+        // Event handling for buttons
+        viewBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
+
+        searchBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        respondBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                respondBtnActionPerformed(evt);
+            }
+        });
+
+        resolveBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                resolveBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        backBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
     }
 
-    public void showMenu() {
+    // View button event
+    private void viewBtnActionPerformed(ActionEvent evt) {
 
-        String choice;
-
-        do {
-            choice = JOptionPane.showInputDialog(
-                    "REVIEW SUPPORT REQUESTS\n\n"
-                    + "1. View All Requests\n"
-                    + "2. Search Request\n"
-                    + "3. Respond to Request\n"
-                    + "4. Resolve Request\n"
-                    + "5. Delete Request\n"
-                    + "0. Back\n\n"
-                    + "Enter your choice:");
-
-            if (choice == null) {
-                return;
-            }
-
-            switch (choice) {
-
-                case "1":
-                    viewRequests();
-                    break;
-
-                case "2":
-                    searchRequest();
-                    break;
-
-                case "3":
-                    respondToRequest();
-                    break;
-
-                case "4":
-                    resolveRequest();
-                    break;
-
-                case "5":
-                    deleteRequest();
-                    break;
-
-                case "0":
-                    break;
-
-                default:
-                    JOptionPane.showMessageDialog(null,
-                            "Invalid choice.");
-            }
-
-        } while (!choice.equals("0"));
+        requestTa.setText("No requests to display yet.");
     }
 
-    public void viewRequests() {
+    // Search button event
+    private void searchBtnActionPerformed(ActionEvent evt) {
 
-        String details = "";
-
-        for (SupportRequest request : manager.getAllRequests()) {
-            details += request.getDetails() + "\n\n";
-        }
-
-        if (details.equals("")) {
-            details = "No requests available.";
-        }
-
-        JOptionPane.showMessageDialog(null, details);
+        requestTa.setText("Search functionality coming soon.");
     }
 
-    public void searchRequest() {
+    // Respond button event
+    private void respondBtnActionPerformed(ActionEvent evt) {
 
-        String input = JOptionPane.showInputDialog(
-                "Enter Request ID:");
-
-        if (input == null) {
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(input);
-
-            SupportRequest request = manager.searchRequest(id);
-
-            if (request != null) {
-                JOptionPane.showMessageDialog(null,
-                        request.getDetails());
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Request not found.");
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Please enter a valid number.");
-        }
+        JOptionPane.showInputDialog(
+                "Enter your response:");
     }
 
-    public void respondToRequest() {
+    // Resolve button event
+    private void resolveBtnActionPerformed(ActionEvent evt) {
 
-        String input = JOptionPane.showInputDialog(
-                "Enter Request ID:");
-
-        if (input == null) {
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(input);
-            SupportRequest request = manager.searchRequest(id);
-
-            if (request != null) {
-
-                String response = JOptionPane.showInputDialog(
-                        "Enter response:");
-
-                if (response == null) {
-                    return;
-                }
-
-                request.recordResponse(response);
-
-                JOptionPane.showMessageDialog(null,
-                        "Response saved.");
-
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Request not found.");
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Please enter a valid number.");
-        }
+        JOptionPane.showMessageDialog(null,
+                "Resolve functionality coming soon.");
     }
 
-    public void resolveRequest() {
+    // Delete button event
+    private void deleteBtnActionPerformed(ActionEvent evt) {
 
-        String input = JOptionPane.showInputDialog(
-                "Enter Request ID:");
-
-        if (input == null) {
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(input);
-            SupportRequest request = manager.searchRequest(id);
-
-            if (request != null) {
-                request.markResolved();
-
-                JOptionPane.showMessageDialog(null,
-                        "Request marked as resolved.");
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Request not found.");
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Please enter a valid number.");
-        }
+        JOptionPane.showMessageDialog(null,
+                "Delete functionality coming soon.");
     }
 
-    public void deleteRequest() {
+    // Back button event
+    private void backBtnActionPerformed(ActionEvent evt) {
 
-        String input = JOptionPane.showInputDialog(
-                "Enter Request ID:");
-
-        if (input == null) {
-            return;
-        }
-
-        try {
-            int id = Integer.parseInt(input);
-            SupportRequest request = manager.searchRequest(id);
-
-            if (request != null) {
-                manager.deleteRequest(id);
-
-                JOptionPane.showMessageDialog(null,
-                        "Request deleted.");
-            } else {
-                JOptionPane.showMessageDialog(null,
-                        "Request not found.");
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Please enter a valid number.");
-        }
+        dispose();
     }
 }
-

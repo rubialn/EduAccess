@@ -88,7 +88,10 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        eduacess.Main.main(new String[0]);
+        /** eduacess.Main.main(new String[0]); **/
+        eduacess.Educational_Support_App screen = new eduacess.Educational_Support_App();
+        screen.setVisible(true);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

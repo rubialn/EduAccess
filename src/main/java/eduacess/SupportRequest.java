@@ -8,7 +8,7 @@ package eduacess;
  *
  * @author joyro
  */
-
+// Parent class for educational support requests
 public abstract class SupportRequest {
 
     private int requestId;
@@ -19,8 +19,8 @@ public abstract class SupportRequest {
     public SupportRequest(int requestId, String message) {
         this.requestId = requestId;
         this.message = message;
-        this.response = "";
-        this.resolved = false;
+        response = "";
+        resolved = false;
     }
 
     public int getRequestId() {
@@ -49,5 +49,3 @@ public abstract class SupportRequest {
 
     public abstract String getDetails();
 }
-   
-

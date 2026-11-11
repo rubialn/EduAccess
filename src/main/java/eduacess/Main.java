@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class Main {
 
     public static void main(String[] args) {
-
+        /**
         SupportManager manager = new SupportManager();
 
         RequestEditor editor = new RequestEditor(manager);
@@ -59,7 +59,9 @@ public class Main {
                             "Invalid choice.");
             }
 
-        } while (!choice.equals("0"));
+        } while (!choice.equals("0")); **/
+        
+        Educational_Support_App.main(args);
     }
 }
 

@@ -8,6 +8,8 @@ package eduacess;
  *
  * @author joyro
  */
+
+// Child class for study guidance requests
 public class StudyGuidanceRequest extends SupportRequest {
 
     private String topic;
@@ -24,13 +26,9 @@ public class StudyGuidanceRequest extends SupportRequest {
 
     @Override
     public String getDetails() {
-        return "Request ID: " + getRequestId()
-                + "\nType: Study Guidance"
-                + "\nTopic: " + topic
-                + "\nMessage: " + getMessage()
-                + "\nResponse: " + getResponse()
-                + "\nResolved: " + isResolved();
+        return "Topic: " + topic
+                + "\nMessage: " + getMessage();
     }
 }
- 
+
 

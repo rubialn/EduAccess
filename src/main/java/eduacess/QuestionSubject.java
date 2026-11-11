@@ -8,6 +8,8 @@ package eduacess;
  *
  * @author joyro
  */
+
+// Child class for subject questions
 public class QuestionSubject extends SupportRequest {
 
     private String subject;
@@ -24,14 +26,11 @@ public class QuestionSubject extends SupportRequest {
 
     @Override
     public String getDetails() {
-        return "Request ID: " + getRequestId()
-                + "\nType: Subject Question"
-                + "\nSubject: " + subject
-                + "\nMessage: " + getMessage()
-                + "\nResponse: " + getResponse()
-                + "\nResolved: " + isResolved();
+        return "Subject: " + subject
+                + "\nMessage: " + getMessage();
     }
 }
+
 
 
 
