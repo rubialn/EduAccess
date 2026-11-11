@@ -44,6 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setText("Learning Resources");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setText("Educational Support");
         jButton3.addActionListener(this::jButton3ActionPerformed);
@@ -83,6 +84,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         PracticeForm screen = new PracticeForm();
+        screen.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE); // this is for the X on the page to close only the page not the application completely
         screen.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -90,9 +92,17 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         /** eduacess.Main.main(new String[0]); **/
         eduacess.Educational_Support_App screen = new eduacess.Educational_Support_App();
+        screen.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
         screen.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        learningrecourses.ResourceBrowser screen = new learningrecourses.ResourceBrowser();
+        screen.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        screen.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
